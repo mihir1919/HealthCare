@@ -21,7 +21,7 @@
   </body>
 
   <body>
-      <img src="{% static 'images/Capture.PNG' %}" alt="">
+      {% comment %} <img src="{% static 'images/Capture.PNG' %}" alt=""> {% endcomment %}
 
       <h1>Hello</h1>
       {{ f }}
@@ -29,12 +29,11 @@
       {{ ans }}
 
       {{  score }}
-
       {% comment %} {% for i in f %}
         <h1>{{ i }}</h1>
       {% endfor %} {% endcomment %}
 
       <button><a href={% url 'general' %}>Predict</a></button>
-
+      <button><a href={% url 'download' %}>Download</a></button>
   </body>
 </html>

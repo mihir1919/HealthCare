@@ -20,5 +20,7 @@ urlpatterns = [
     path('', views.home,name="home"),
     path('general/', views.general,name="general"),
     path('general/prediction/', views.prediction,name="prediction"),
+    path('download/',views.download,name="download"),
+    path('general/mailer/',views.mailer,name="mailer"),
     # path('home/', include('prediction.urls')),
 ]

@@ -7,7 +7,16 @@ import matplotlib.pyplot as plt
 import os.path
 BASE = os.path.dirname(os.path.abspath(__file__))
 
-# Create your views here.
+def mailer(request):
+    if(request.method=="POST"):
+        name=request.POST.get("fn")+request.POST.get("ln")
+        one=int(request.POST.get("one"))
+        two=int(request.POST.get("two"))
+        three=int(request.POST.get("three"))
+        four=int(request.POST.get("four"))
+        five=int(request.POST.get("fifth"))
+
+
 
 def home(request):
     f=Person.objects.all()
@@ -61,13 +70,38 @@ def prediction(request):
     # t=[xtest[i] for i in range(len(xtest))]
     # idx=[i for i in range(len(xtest))]
     ans=model.predict(xtest)
-# ans=[i[0] for i in ans]
 
-# l={}
-# l['Id']=(idx)
-# l['target']=ans
-
-#     name=""
     print(ans)
     
     return render(request,'prediction/home.html',{'ans':ans,'score':score})
+
+# ##################
+# from django.http import HttpResponse
+# import csv
+
+# def download(request):
+#     response = HttpResponse(content_type='text/csv')
+#     response['Content-Disposition'] = 'attachment; filename="users.csv"'
+
+#     writer = csv.writer(response)
+#     writer.writerow(['UserId','Name', 'DOB', 'Joining Data'])
+
+#     users = Person.objects.all().values_list('id','name', 'dob', 'regdate')
+#     for user in users:
+#         writer.writerow(user)
+
+#     return response
+# ############
+
+# def anon(request):
+#     response = HttpResponse(content_type='text/csv')
+#     response['Content-Disposition'] = 'attachment; filename="users.csv"'
+
+#     writer = csv.writer(response)
+#     writer.writerow(['UserId', 'DOB', 'Joining Data'])
+
+#     users = Person.objects.all().values_list('id', 'dob', 'regdate')
+#     for user in users:
+#         writer.writerow(user)
+
+#     return response
